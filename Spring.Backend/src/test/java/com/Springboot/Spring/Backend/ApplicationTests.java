@@ -7,50 +7,51 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.Springboot.Spring.Backend.entity.Employee;
-import com.Springboot.Spring.Backend.repository.EmployeeRepository;
+import com.Springboot.Spring.Backend.entity.Customer;
+import com.Springboot.Spring.Backend.repository.CustomerRepository;
 
 @SpringBootTest
 class ApplicationTests {
 
 	@Autowired
-	EmployeeRepository eRepo;
+	CustomerRepository cRepo;
 	
 	@Test
 	public void testCreate() {
-		Employee e=new Employee();
-		e.setId(2L);
-		e.setName("poornima");
-		eRepo.save(e);
-		assertNotNull(eRepo.findById(2L).get());
+		Customer c=new Customer();
+		c.setId(2L);
+		c.setName("poornima");
+		c.setFoodPreference("veg");
+		cRepo.save(c);
+		assertNotNull(cRepo.findById(2L).get());
 	}
 	
 	@Test
 	public void testbyId()
 	{
-		Employee e = eRepo.findById(2L).get();
-		assertEquals("poornima", e.getName());	
+		Customer c = cRepo.findById(2L).get();
+		assertEquals("poornima", c.getName());	
 	}
 	
 	@Test
 	public void testAll()
 	{
-		List<Employee> list = eRepo.findAll();
+		List<Customer> list = cRepo.findAll();
 		assertTrue(list.size()>0);	
 	}
 	@Test
 	public void testUpdate()
 	{
-		Employee e= eRepo.findById(2L).get();
+		Customer e= cRepo.findById(2L).get();
 		e.setName("geethika");
-		eRepo.save(e);
-		assertNotEquals("poornima",eRepo.findById(2L).get().getName());
+		cRepo.save(e);
+		assertNotEquals("poornima",cRepo.findById(2L).get().getName());
 	}
 
 	@Test
 	public void testDelete()
 	{
-		eRepo.deleteById(2L);
-		assertFalse(eRepo.existsById(2L));
+		cRepo.deleteById(2L);
+		assertFalse(cRepo.existsById(2L));
 	}
 }

@@ -7,20 +7,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="employees")
-public class Employee {
+@Table(name="Customer")
+public class Customer {
 	
 	@Id
 	private long id;
 	private String name;
+	private String FoodPreference;
 	
 	
-	public Employee() {
+	public Customer() {
 		
 	}
-	public Employee(String name) {
+	public Customer(String name) {
 		super();
 		this.name = name;
+	}
+	
+	public Customer(String name, String foodPreference) {
+		super();
+		this.name = name;
+		FoodPreference = foodPreference;
+	}
+	public String getFoodPreference() {
+		return FoodPreference;
+	}
+	public void setFoodPreference(String foodPreference) {
+		FoodPreference = foodPreference;
 	}
 	public long getId() {
 		return id;

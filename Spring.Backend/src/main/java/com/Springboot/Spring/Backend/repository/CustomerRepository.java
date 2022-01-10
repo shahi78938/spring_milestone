@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.Springboot.Spring.Backend.entity.Employee;
+import com.Springboot.Spring.Backend.entity.Customer;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee,Long>{
+public interface CustomerRepository extends JpaRepository<Customer,Long>{
 
-	Optional<Employee> findByName(String name);
+	Optional<Customer> findByName(String name);
 
 }
